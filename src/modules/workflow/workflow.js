@@ -4,6 +4,8 @@
         .module('workflow', [
         ])
         .config(config)
+        .factory('wfFct', workflowFactory)
+        .controller('wfCtrl', workflowController)
     ;
 
     // @ngInject
@@ -13,5 +15,24 @@
                 url: '/workflow',
                 templateUrl: 'modules/workflow/workflow.html'
             });
+    }
+
+    // @ngInject
+    function workflowFactory() {
+        var o = {};
+
+        return o;
+    }
+
+    function workflowController() {
+        var s = this;
+        var o = {
+            project: '',
+            status: ''
+        };
+        s.setProject = function (_project) {
+
+        };
+
     }
 })();
