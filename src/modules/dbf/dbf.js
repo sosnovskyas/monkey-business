@@ -8,7 +8,7 @@
     ;
 
     // @ngInject
-    function dbcFactory(URL, $firebaseAuth){
+    function dbcFactory(URL, $firebaseAuth) {
         var ref = new Firebase(URL);
         var authRef =  $firebaseAuth(ref);
         var o = {};
