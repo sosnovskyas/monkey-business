@@ -3,7 +3,8 @@
     angular
         .module('monkey-business',[
             'firebase',
-            'ui.router'
+            'ui.router',
+            'dbf'
         ])
         .config(config)
     ;
