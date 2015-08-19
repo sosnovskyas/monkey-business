@@ -1,17 +1,18 @@
 ;
 (function () {
     angular
-        .module('monkey-business',[
+        .module('monkey-business', [
             'firebase',
             'ui.router',
             'dbf',
-            'home'
+            'home',
+            'mainMenu'
         ])
         .config(config)
     ;
 
     // @ngInject
-    function config ($urlRouterProvider) {
+    function config($urlRouterProvider) {
         $urlRouterProvider
             .otherwise('/home');
     }
