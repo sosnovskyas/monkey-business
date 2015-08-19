@@ -5,5 +5,11 @@
             'firebase',
             'ui.router'
         ])
+        .config(config)
     ;
+
+    // @ngInject
+    function config () {
+
+    }
 })();
