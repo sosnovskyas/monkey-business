@@ -10,7 +10,8 @@
     ;
 
     // @ngInject
-    function config () {
-
+    function config ($urlRouterProvider) {
+        $urlRouterProvider
+            .otherwise('/login');
     }
 })();
