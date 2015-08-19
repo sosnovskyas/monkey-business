@@ -4,7 +4,8 @@
         .module('monkey-business',[
             'firebase',
             'ui.router',
-            'dbf'
+            'dbf',
+            'home'
         ])
         .config(config)
     ;
@@ -12,6 +13,6 @@
     // @ngInject
     function config ($urlRouterProvider) {
         $urlRouterProvider
-            .otherwise('/login');
+            .otherwise('/home');
     }
 })();
