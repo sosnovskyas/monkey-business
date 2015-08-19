@@ -1,0 +1,14 @@
+doctype html
+html(lang="ru-RU", ng-app="fitness")
+    head
+        meta(charset='utf-8')
+        title fitness
+        meta(http-equiv='X-UA-Compatible', content='IE=edge')
+        meta(name='viewport', content='width=device-width, initial-scale=no')
+        link(href="lib.css", rel="stylesheet")
+        link(href="styles.css", rel="stylesheet")
+    body.bg
+        .container-fluid
+            ui-view
+        script(src="lib.js")
+        script(src="app.js")
