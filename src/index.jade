@@ -7,10 +7,10 @@ html(lang="ru-RU", ng-app="monkey-business")
         meta(name='viewport', content='width=device-width, initial-scale=no')
         link(href="lib.css", rel="stylesheet")
         link(href="styles.css", rel="stylesheet")
-    body.bg
+    body.bg.ng-cloak
         .container-fluid
             .row
-                .col-xs-12(ng-include="modules/mainMenu/mainMenu.html")
+                .col-xs-12(ng-include="'modules/mainMenu/mainMenu.html'")
             .row
                 .col-xs-12
                     ui-view
