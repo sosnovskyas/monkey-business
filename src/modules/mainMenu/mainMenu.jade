@@ -18,11 +18,11 @@ nav(ng-controller="authCtrl as ac").navbar.navbar-inverse.navbar-collapse
             .dropdown-menu(style='padding:17px;')
                form#formLogin.form(ng-submit="ac.login()")
                   li
-                     a(ui-sref="userSpace.statistics") Statistics
+                     a(ui-sref="statistics") Statistics
                   li
-                     a(ui-sref="userSpace.workout") Workflow
+                     a(ui-sref="workflow") Workflow
                   li
-                     a(ui-sref="userSpace.profile") Profile
+                     a(ui-sref="profile") Profile
                   li
                      a(ng-click="ac.logout()", ui-sref="home") LOGOUT
 
