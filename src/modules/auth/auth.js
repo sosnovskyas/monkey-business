@@ -12,6 +12,34 @@
     function authFactory(DBC, $state) {
         var o = {};
 
+        o.signUp = function (_user) {
+            DBC.getAuthRef()
+                .$createUser({
+                    email: _user.email,
+                    password: _user.password
+                })
+                .then(function (userData) {
+                    console.log('User ' + userData.uid + ' created successfully!');
+                    console.log(userData);
+
+                    DBC.getRef().child('users').child(userData.uid).set({
+                        fullname: _user.fullname,
+                        date: Firebase.ServerValue.TIMESTAMP
+                    });
+
+                    return DBC.getAuthRef().$authWithPassword({
+                        email: _user.email,
+                        password: _user.password
+                    });
+                })
+                .then(function (authData) {
+                    console.log('Logged in as:', authData.uid);
+                })
+                .catch(function (error) {
+                    console.error('Error: ', error);
+                });
+        };
+
         o.login = function (_user) {
             DBC.getAuthRef().$authWithPassword(_user)
                 .then(function (authData) {
@@ -46,6 +74,11 @@
             email: 'qwe@qwe.ru',
             password: '1234'
         };
+
+        s.signUp = function () {
+            authFct.signUp(s.user);
+        };
+
         s.login = function () {
             return authFct.login(s.user);
         };

@@ -41,7 +41,7 @@ nav(ng-controller="authCtrl as ac").navbar.navbar-inverse.navbar-collapse
             .dropdown-menu(style='padding:17px;')
                form#formLogin.form(ng-submit="ac.signUp()")
                   input#username(name='fullname', type='text', placeholder='Full name', ng-model="ac.user.fullname")
-                  input#username(name='username', type='text', placeholder='Username', ng-model="ac.user.email")
+                  input#username(name='email', type='email', placeholder='Username', ng-model="ac.user.email")
                   input#password(name='password', type='password', placeholder='Password', ng-model="ac.user.password")
                   br
                   button#btnLogin.btn(type='submit') SignUp
