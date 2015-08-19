@@ -5,26 +5,24 @@ nav(ng-controller="authCtrl as ac").navbar.navbar-inverse.navbar-collapse
          span.icon-bar
          span.icon-bar
          span.icon-bar
-      a(ui-sref="home").navbar-brand
+      a(ui-sref="home").navbar-brand MonkeyBusiness
    #bs-example-navbar-collapse-1.collapse.navbar-collapse
-      //-ul.nav.navbar-nav
+      ul.nav.navbar-nav
       //-   li(ui-sref-active="active")
       //-      a(ui-sref="home") Home
       //-   li(ui-sref-active="active")
       //-      a(ui-sref="about") About
       ul.nav.navbar-nav.navbar-right(ng-if="ac.signedIn()")
          li#menuLogin.dropdown
-            a#navLogin.dropdown-toggle(href='#', data-toggle='dropdown') user {{ac.auth.password.email}}
+            a#navLogin.dropdown-toggle(href='#', data-toggle='dropdown') menu
             .dropdown-menu(style='padding:17px;')
                form#formLogin.form(ng-submit="ac.login()")
                   li
-                     a(ui-sref="userSpace.workout") Workout
+                     a(ui-sref="statistics") Statistics
                   li
-                     a(ui-sref="userSpace.exercises") Exercises
+                     a(ui-sref="workflow") Workflow
                   li
-                     a(ui-sref="userSpace.statistics") Statistics
-                  li
-                     a(ui-sref="userSpace.profile") Profile
+                     a(ui-sref="profile") Profile
                   li
                      a(ng-click="ac.logout()", ui-sref="home") LOGOUT
 
