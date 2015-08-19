@@ -1,7 +1,7 @@
 ;
 (function () {
     angular
-        .module('home', [
+        .module('workflow', [
         ])
         .config(config)
     ;
@@ -9,9 +9,9 @@
     // @ngInject
     function config($stateProvider) {
         $stateProvider
-            .state('home', {
-                url: '/home',
-                templateUrl: 'modules/home/home.html'
+            .state('workflow', {
+                url: '/workflow',
+                templateUrl: 'modules/workflow/workflow.html'
             });
     }
 })();
