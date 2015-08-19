@@ -1,0 +1,9 @@
+{
+  "firebase": "monkey-business",
+  "public": "./build/prod",
+  "ignore": [
+    "firebase.json",
+    "**/.*",
+    "**/node_modules/**"
+  ]
+}
