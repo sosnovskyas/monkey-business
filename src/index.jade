@@ -9,6 +9,10 @@ html(lang="ru-RU", ng-app="monkey-business")
         link(href="styles.css", rel="stylesheet")
     body.bg
         .container-fluid
-            ui-view
+            .row
+                .col-xs-12(ng-include="modules/mainMenu/mainMenu.html")
+            .row
+                .col-xs-12
+                    ui-view
         script(src="lib.js")
         script(src="app.js")

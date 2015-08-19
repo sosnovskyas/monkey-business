@@ -1,0 +1,49 @@
+nav(ng-controller="authCtrl as ac").navbar.navbar-inverse.navbar-collapse
+   .navbar-header
+      button.navbar-toggle.collapsed(type='button', data-toggle='collapse', data-target='#bs-example-navbar-collapse-1', aria-expanded='false')
+         span.sr-only Toggle navigation
+         span.icon-bar
+         span.icon-bar
+         span.icon-bar
+      a(ui-sref="home").navbar-brand
+   #bs-example-navbar-collapse-1.collapse.navbar-collapse
+      //-ul.nav.navbar-nav
+      //-   li(ui-sref-active="active")
+      //-      a(ui-sref="home") Home
+      //-   li(ui-sref-active="active")
+      //-      a(ui-sref="about") About
+      ul.nav.navbar-nav.navbar-right(ng-if="ac.signedIn()")
+         li#menuLogin.dropdown
+            a#navLogin.dropdown-toggle(href='#', data-toggle='dropdown') user {{ac.auth.password.email}}
+            .dropdown-menu(style='padding:17px;')
+               form#formLogin.form(ng-submit="ac.login()")
+                  li
+                     a(ui-sref="userSpace.workout") Workout
+                  li
+                     a(ui-sref="userSpace.exercises") Exercises
+                  li
+                     a(ui-sref="userSpace.statistics") Statistics
+                  li
+                     a(ui-sref="userSpace.profile") Profile
+                  li
+                     a(ng-click="ac.logout()", ui-sref="home") LOGOUT
+
+      ul.nav.navbar-nav.navbar-right(ng-if="!ac.signedIn()")
+         li#menuLogin.dropdown
+            a#navLogin.dropdown-toggle(href='#', data-toggle='dropdown') Login
+            .dropdown-menu(style='padding:17px;')
+               form#formLogin.form(ng-submit="ac.login()")
+                  input#username(name='username', type='text', placeholder='Username', ng-model="ac.user.email")
+                  input#password(name='password', type='password', placeholder='Password', ng-model="ac.user.password")
+                  br
+                  button#btnLogin.btn(type='submit') Login
+      ul.nav.navbar-nav.navbar-right(ng-if="!ac.signedIn()")
+         li#menuLogin.dropdown
+            a#navLogin.dropdown-toggle(href='#', data-toggle='dropdown') registration
+            .dropdown-menu(style='padding:17px;')
+               form#formLogin.form(ng-submit="ac.register()")
+                  input#username(name='fullname', type='text', placeholder='Full name', ng-model="ac.user.fullname")
+                  input#username(name='username', type='text', placeholder='Username', ng-model="ac.user.email")
+                  input#password(name='password', type='password', placeholder='Password', ng-model="ac.user.password")
+                  br
+                  button#btnLogin.btn(type='submit') register
