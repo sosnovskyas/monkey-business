@@ -9,12 +9,41 @@
     ;
 
     // @ngInject
-    function config($stateProvider) {
+    function config($stateProvider, $urlRouterProvider) {
+        $urlRouterProvider
+            .when('/workflow', '/workflow/projects');
         $stateProvider
             .state('workflow', {
                 url: '/workflow',
-                templateUrl: 'modules/workflow/workflow.html'
-            });
+                templateUrl: 'modules/workflow/workflow.html',
+                controller: 'authCtrl as ac',
+                resolve:{
+                    signedIn: function (authFct, $q) {
+                        var defered = $q.defer();
+                        if (authFct.signedIn()){
+                            console.log('OK');
+                            defered.resolve();
+                        } else {
+                            console.log('ERROR');
+                            defered.reject();
+                        }
+                        return defered.promise;
+                    }
+                }
+            })
+            .state('workflow.projects', {
+                url: '/projects',
+                templateUrl: 'modules/workflow/workflow.projects.html'
+            })
+        .state('workflow.status', {
+                url: '/status',
+                templateUrl: 'modules/workflow/workflow.status.html'
+            })
+        .state('workflow.data', {
+                url: '/data',
+                templateUrl: 'modules/workflow/workflow.data.html'
+            })
+        ;
     }
 
     // @ngInject
