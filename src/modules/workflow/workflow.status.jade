@@ -1,6 +1,6 @@
 .btn-group-vertical.btn-group-lg(role='group')
-   button.btn.btn-default(type='button', ui-sref="workflow.data") scam payed
-   button.btn.btn-default(type='button', ui-sref="workflow") scam free
+   input.btn.btn-default(type='button', ui-sref="workflow", ng-click="wc.setStatus('scam free')", value="scam free")
+   input.btn.btn-default(type='button', ui-sref="workflow.data", ng-click="wc.setStatus('scam payed')", value="scam payed")
    button.btn.btn-default(type='button', ui-sref="workflow.data") contact payed
    button.btn.btn-default(type='button', ui-sref="workflow") contact free
    button.btn.btn-default(type='button', ui-sref="workflow") aprove
