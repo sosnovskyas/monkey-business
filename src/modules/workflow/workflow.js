@@ -33,11 +33,13 @@
             })
             .state('workflow.projects', {
                 url: '/projects',
-                templateUrl: 'modules/workflow/workflow.projects.html'
+                templateUrl: 'modules/workflow/workflow.projects.html',
+                controller: 'wfCtrl as wc'
             })
         .state('workflow.status', {
                 url: '/status',
-                templateUrl: 'modules/workflow/workflow.status.html'
+                templateUrl: 'modules/workflow/workflow.status.html',
+                controller: 'wfCtrl as wc'
             })
         .state('workflow.data', {
                 url: '/data',
@@ -49,19 +51,41 @@
     // @ngInject
     function workflowFactory() {
         var o = {};
+        var userProject;
+        var userStatus;
+
+        o.setProject = function (_project) {
+            userProject = _project;
+        };
+
+        o.getProject = function () {
+            return userProject;
+        };
+
+        o.setStatus = function (_status) {
+            userStatus = _status;
+        };
+
+        o.getStatus = function () {
+            return userStatus;
+        };
 
         return o;
     }
 
-    function workflowController() {
+    // @ngInject
+    function workflowController(wfFct) {
         var s = this;
-        var o = {
-            project: '',
-            status: ''
-        };
         s.setProject = function (_project) {
-
+            console.log('set project', _project);
+            wfFct.setProject(_project);
+            console.log(wfFct.getProject());
         };
 
+        s.setStatus = function (_status) {
+            console.log('set status', _status);
+            wfFct.setProject(_status);
+            console.log(wfFct.getProject(), wfFct.getStatus());
+        };
     }
 })();
