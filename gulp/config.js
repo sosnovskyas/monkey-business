@@ -41,12 +41,10 @@ module.exports = {
         src: [
                 'bower/jquery/dist/jquery.js',
                 'bower/angular/angular.js',
-                'bower/firebase/firebase.js',
+                'bower/firebase/firebase-debug.js',
                 'bower/angularfire/dist/angularfire.js',
                 'bower/angular-ui-router/release/angular-ui-router.js',
-                'bower/angular-roure/angular-roure.js',
-                'bower/bootstrap/dist/js/bootstrap.js',
-                'bower/firebase-simple-login/firebase-simple-login.js'
+                'bower/bootstrap/dist/js/bootstrap.js'
             ],
         concatFile: 'lib.js',
         dest: dev
@@ -73,16 +71,45 @@ module.exports = {
 
     // PRODUCTION
     prod:{},
-    prodCss: {
-        src: src + cssFileList,
+    prodCssVendor: {
+        src: [
+            // bootstrap
+            'bower/bootstrap/dist/css/bootstrap.css',
+            'bower/bootstrap/dist/css/bootstrap-theme.css',
+            // for ng-cloak working
+            'bower/angular/angular-csp.css'
+        ],
         dest: prod,
+        concatFile: 'lib.css',
         settings: {
             indentedSyntax: true, // Enable .sass syntax!
             imagePath: 'i' // Used by the image-url helper
         }
     },
-    prodJs: {
+    prodCssCustom: {
+        src: src + cssFileList,
+        dest: prod,
+        concatFile: 'styles.css',
+        settings: {
+            indentedSyntax: true, // Enable .sass syntax!
+            imagePath: 'i' // Used by the image-url helper
+        }
+    },
+    prodJsVendor: {
+        src: [
+            'bower/jquery/dist/jquery.min.js',
+            'bower/angular/angular.min.js',
+            'bower/firebase/firebase.js',
+            'bower/angularfire/dist/angularfire.min.js',
+            'bower/angular-ui-router/release/angular-ui-router.min.js',
+            'bower/bootstrap/dist/js/bootstrap.js'
+        ],
+        concatFile: 'lib.js',
+        dest: prod
+    },
+    prodJsCustom: {
         src: src + jsFileList,
+        concatFile: 'app.js',
         dest: prod
     },
     prodImg: {

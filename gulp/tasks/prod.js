@@ -1,14 +1,18 @@
 var gulp = require('gulp');
-var config = require('../config').prod;
+var runSequence = require('run-sequence');
 
-
-//production build
-gulp.task('prod',[
-    'prod-js',
-    'prod-css',
-    'prod-markup',
-    'prod-img'
-    //,
-    //'prod-server'
-]);
-
+gulp.task('prod', function (callback) {
+    runSequence(
+        'prod-clean',
+        [
+            'prod-img',
+            'prod-js-vendor',
+            'prod-js-custom',
+            'prod-css-vendor',
+            'prod-css-custom',
+            'prod-markup'
+        ],
+        // 'prod-server',
+        // 'prod-watch',
+        callback);
+});
