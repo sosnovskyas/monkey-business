@@ -1,4 +1,4 @@
 .btn-group-vertical.btn-group-lg(role='group')
     label ID
-    input(type='input', placeholder="USRE ID")
-    input.btn.btn-default(type='button', ui-sref="workflow.done", value="ok")
+    input(type='input', ng-model="userID", placeholder="USRE ID")
+    input.btn.btn-default(type='button', ui-sref="workflow.done", ng-click="wc.setUserId(userID)", value="ok")
