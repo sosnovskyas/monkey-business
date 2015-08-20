@@ -55,7 +55,7 @@
     }
 
     // @ngInject
-    function workflowFactory() {
+    function workflowFactory(DBC) {
         var o = {};
         var userProject;
         var userStatus;
@@ -85,8 +85,16 @@
             return userId;
         };
 
-        o.sendDone = function () {
-
+        o.sendDoneData = function () {
+            DBC.getRef().child('profiles').push({
+                timestamp: Firebase.ServerValue.TIMESTAMP,
+                monkey: DBC.getAuthRef().$getAuth().password.email,
+                project:  userProject,
+                status: userStatus,
+                data: {
+                    id: userId
+                }
+            });
         };
 
         return o;
@@ -123,6 +131,10 @@
 
         s.getUserId = function () {
             return wfFct.getUserId();
+        };
+
+        s.sendDoneData = function () {
+            return wfFct.sendDoneData();
         };
     }
 })();
