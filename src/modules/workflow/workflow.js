@@ -43,7 +43,13 @@
             })
         .state('workflow.data', {
                 url: '/data',
-                templateUrl: 'modules/workflow/workflow.data.html'
+                templateUrl: 'modules/workflow/workflow.data.html',
+                controller: 'wfCtrl as wc'
+            })
+        .state('workflow.done', {
+                url: '/done',
+                templateUrl: 'modules/workflow/workflow.done.html',
+                controller: 'wfCtrl as wc'
             })
         ;
     }
@@ -53,6 +59,7 @@
         var o = {};
         var userProject;
         var userStatus;
+        var userId;
 
         o.setProject = function (_project) {
             userProject = _project;
@@ -70,6 +77,18 @@
             return userStatus;
         };
 
+        o.setUserId = function (_userId) {
+            userId = _userId;
+        };
+
+        o.getUserId = function () {
+            return userId;
+        };
+
+        o.sendDone = function () {
+
+        };
+
         return o;
     }
 
@@ -79,13 +98,31 @@
         s.setProject = function (_project) {
             console.log('set project', _project);
             wfFct.setProject(_project);
-            console.log(wfFct.getProject());
+            console.log(wfFct.getProject(), wfFct.getStatus(),  wfFct.getUserId());
         };
 
         s.setStatus = function (_status) {
             console.log('set status', _status);
-            wfFct.setProject(_status);
-            console.log(wfFct.getProject(), wfFct.getStatus());
+            wfFct.setStatus(_status);
+            console.log(wfFct.getProject(), wfFct.getStatus(),  wfFct.getUserId());
+        };
+
+        s.setUserId = function (_userId) {
+            console.log('set status', _userId);
+            wfFct.setUserId(_userId);
+            console.log(wfFct.getProject(), wfFct.getStatus(),  wfFct.getUserId());
+        };
+
+        s.getProject = function () {
+            return wfFct.getProject();
+        };
+
+        s.getStatus = function () {
+            return wfFct.getStatus();
+        };
+
+        s.getUserId = function () {
+            return wfFct.getUserId();
         };
     }
 })();
