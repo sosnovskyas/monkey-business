@@ -34,7 +34,7 @@
             .state('statistic.basic', {
                 url: '/basic',
                 templateUrl: 'modules/statistic/statistic.basic.html',
-                controller: 'wfCtrl as wc'
+                controller: 'statCtrl as sc'
             })
         ;
     }
@@ -45,7 +45,7 @@
 
         o.getLastDayProfile = function () {
             DBC.getRf().child('profiles').orderByValue().on('value', function (snapshot) {
-                snapshot.forEach(function(data) {
+                snapshot.forEach(function (data) {
                     console.log('The ' + data.key() + ' dinosaur\'s score is ' + data.val());
                 });
             });
@@ -57,7 +57,7 @@
         var s = this;
 
         s.getProfiles = function () {
-
-        }
+            return true;
+        };
     }
 })();
