@@ -87,6 +87,7 @@
         };
 
         o.sendDoneData = function () {
+            if (!userId) userId = '';
             DBC.getRef().child('profiles').push({
                 timestamp: Firebase.ServerValue.TIMESTAMP,
                 monkey: DBC.getAuthRef().$getAuth().password.email,
