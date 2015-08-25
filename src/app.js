@@ -6,9 +6,10 @@
             'firebase',
             'ui.router',
             'dbf',
+            'mainMenu',
             'home',
             'workflow',
-            'mainMenu'
+            'statistic'
         ])
         .config(config)
     ;

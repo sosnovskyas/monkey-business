@@ -1,1 +1,14 @@
-h1 basic statistic
+h3 basic statistic
+h5 {{currentDate |date}}
+table.table.table-bordered
+    thead
+        tr
+            //- td date
+            td projec
+            td status
+            td id
+    tr.table-striped(ng-repeat="profile in dailyProfiles")
+        //- td {{profile.timestamp | date:'yyyy-MM-dd HH:mm:ss'}}
+        td {{profile.project}}
+        td {{profile.status}}
+        td {{profile.data.id}}
